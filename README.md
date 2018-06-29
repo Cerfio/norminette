@@ -1,5 +1,5 @@
 # norminette
-Normitte (Norme de 2018)
+Norminette (Norme de 2018)
 
 Check :
 
