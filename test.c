@@ -13,7 +13,7 @@ static void toto(int a)
 int main()
 {
 	int a;
-	int b;
+	int b; 
 	int c;
 	int d;
 	int e;

@@ -1,6 +1,18 @@
 # norminette
 Normitte (Norme de 2018)
 
+First utilisation :
+
+	chmod +x install.sh
+      ./install.sh     
+Use for the moment:
+	ruby norminette.rb file.c (temporary)
+
+Color :
+
+	green is a minor mistake
+
+	red is a major mistake
 Check :
 
 	Header (in progress)
@@ -16,3 +28,5 @@ Check :
 	Structure de controle (not start)
 
 	Argument fonction (finish)
+
+PDF = https://intra.epitech.eu/file/public/technical-documentations/epitech_c_coding_style.pdf

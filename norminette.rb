@@ -2,6 +2,8 @@
 # Project Norminette in ruby
 # Cerfio
 
+require 'colorize'
+
 ARGV
 
 def check_header(i, line, after)
@@ -28,9 +30,9 @@ end
 def check_space_end_line(line, i)
   len = line.length
   if (line[len - 2] == " ")
-    puts("Espace en trop en fin de ligne " + i.to_s)
+    puts("Espace en trop en fin de ligne " + i.to_s + " minor(L3)".green)
   elsif (line[len - 2] == "\t")
-    puts("Tabulation en trop en fin de ligne " + i.to_s)
+    puts("Tabulation en trop en fin de ligne " + i.to_s + " minor(L3)".green)
   end
 end
 
@@ -67,7 +69,7 @@ def check_long_line(line, i)
     count = count + 1
   end
   if (len > 80)
-    puts("Ligne trop longue " + len.to_s + " ligne " + i.to_s)
+    puts("Ligne trop longue " + len.to_s + " ligne " + i.to_s + " MAJOR(F3)".red)
   end
 end
 
@@ -77,7 +79,7 @@ def argument_function(line, i)
   name_function = line.split("(")
   name_function = name_function[0].split(" ")
   if (name_function.length > 1 && line.count("(") >= 1 && line[line.length - 3] == "(")
-    puts("Void manquant dans la declaration de fonction ligne " + i.to_s)
+    puts("Void manquant dans la declaration de fonction ligne " + i.to_s + " MAJOR(F5)".red)
     return (0)
   end
   while (line[count] != "\n")
@@ -87,7 +89,7 @@ def argument_function(line, i)
     count = count + 1
   end
   if (len > 3)
-    puts("Trop d'argument à la fonction " + name_function[name_function.length - 1] +  " " + len.to_s + " ligne " + i.to_s)
+    puts("Trop d'argument à la fonction " + name_function[name_function.length - 1] +  " " + len.to_s + " ligne " + i.to_s + " MAJOR(F5)".red)
   end
 end
 
