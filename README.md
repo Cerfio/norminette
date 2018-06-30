@@ -3,12 +3,16 @@ Normitte (Norme de 2018)
 
 Check :
 
-	Header
+	Header (in progress)
 
-	Space end line
+	Space end line (finish)
 
-	New line end function
+	New line end function (finish)
 
-	Long line
+	Long line (finish)
 
-	Uppercase in progress
+	Uppercase (in progress)
+
+	Structure de controle (not start)
+
+	Argument fonction (finish)

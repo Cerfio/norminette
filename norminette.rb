@@ -71,14 +71,36 @@ def check_long_line(line, i)
   end
 end
 
+def argument_function(line, i)
+  len = 0
+  count = 0
+  name_function = line.split("(")
+  name_function = name_function[0].split(" ")
+  if (name_function.length > 1 && line.count("(") >= 1 && line[line.length - 3] == "(")
+    puts("Void manquant dans la declaration de fonction ligne " + i.to_s)
+    return (0)
+  end
+  while (line[count] != "\n")
+    if (line[count] == ",")
+      len = len + 1
+    end
+    count = count + 1
+  end
+  if (len > 3)
+    puts("Trop d'argument à la fonction " + name_function[name_function.length - 1] +  " " + len.to_s + " ligne " + i.to_s)
+  end
+end
+
 def read_file
   fichier = File.open(ARGV[0],'r').readlines
   i = 0
   while (check_header(i, fichier[i], fichier[i + 1]) != 1)
     i = i + 1
   end
+  i = i + 2
   while (fichier[i])
     check_uppercase(fichier[i], i + 1)
+    argument_function(fichier[i], i + 1)
     check_space_end_line(fichier[i], i + 1)
     check_new_line_function(fichier[i], fichier[i - 1], i)
     check_long_line(fichier[i], i + 1)
