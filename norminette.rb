@@ -6,7 +6,7 @@ require 'colorize'
 
 ARGV
 
-function_banned = ["printf", "atoi", "puts", "getline", "realloc", "strlen", "strcmp"]
+function_banned = ["printf", "atoi", "puts", "getline", "realloc", "strlen", "strcmp", "atol"]
 
 def check_pointeur(line, i)
   jump_pointeur = 0;
