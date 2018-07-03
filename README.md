@@ -28,5 +28,17 @@ Check :
 	Structure de controle (not start)
 
 	Argument fonction (finish)
+Features :
 
+	Check malloc
+
+	Check pointeur no initialize NULL
+
+	Check name variable
+
+	Check multi inclusion
+
+	Check Macro && Define
+
+	
 PDF = https://intra.epitech.eu/file/public/technical-documentations/epitech_c_coding_style.pdf
