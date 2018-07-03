@@ -5,18 +5,10 @@
 ** test
 */
 
-static void toto(int a)
-{
-
-}
-
-int main()
+int main(void)
 {
 	int a;
-	int b; 
-	int c;
-	int d;
-	int e;
+	int b;
 
 	while (1 == 1)
 		puts("salut");
