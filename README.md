@@ -23,6 +23,10 @@ Check :
 
 	Long line (finish)
 
+	Goto (finish)
+
+	Multiple declarion on 1 line (finish)
+
 	Uppercase (in progress)
 
 	Structure de controle (not start)
