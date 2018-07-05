@@ -66,8 +66,10 @@ def check_new_line_function(line, line_before, i)
   end
 end
 
-def check_control_structure()
-
+def check_control_variable(line, i)
+  if (line.include?(",") == true)
+    puts("Declaration de plusieur variable sur la meme ligne ligne " + i.to_s + " minor(L5)".green)
+  end
 end
 
 def check_uppercase(line, i)
@@ -93,6 +95,12 @@ def check_long_line(line, i)
   end
   if (len > 80)
     puts("Ligne trop longue " + len.to_s + " ligne " + i.to_s + " major(F3)".red)
+  end
+end
+
+def check_goto(line, i)
+  if (line.include?("goto") == true)
+    puts("Goto interdit ligne " + i.to_s + " minor(C3)".green)
   end
 end
 
@@ -124,12 +132,11 @@ def read_file
   end
   i = i + 2
   while (fichier[i])
+    check_control_variable(fichier[i], i + 1)
+    check_goto(fichier[i],i + 1)
     check_uppercase(fichier[i], i + 1)
     argument_function(fichier[i], i + 1)
     check_space(fichier[i], i + 1)
-#    if (file["goto"])
-#      puts("")
-#    end
     check_new_line_function(fichier[i], fichier[i - 1], i)
     check_long_line(fichier[i], i + 1)
     i = i + 1
