@@ -5,6 +5,7 @@ First utilisation :
 
 	chmod +x install.sh
       ./install.sh     
+
 Use for the moment:
 	ruby norminette.rb file.c (temporary)
 
@@ -13,6 +14,8 @@ Color :
 	green is a minor mistake
 
 	red is a major mistake
+
+	yellow is a warning mistake
 Check :
 
 	Header (in progress)
@@ -32,9 +35,10 @@ Check :
 	Structure de controle (not start)
 
 	Argument fonction (finish)
-Features :
 
-	Check malloc
+	Check malloc (finish)
+
+Features :
 
 	Check pointeur no initialize NULL
 
@@ -43,6 +47,7 @@ Features :
 	Check multi inclusion
 
 	Check Macro && Define
-
 	
 PDF = https://intra.epitech.eu/file/public/technical-documentations/epitech_c_coding_style.pdf
+
+Crédit = Cerfio

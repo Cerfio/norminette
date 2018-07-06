@@ -8,8 +8,39 @@ ARGV
 
 function_banned = ["printf", "atoi", "puts", "getline", "realloc", "strlen", "strcmp", "atol"]
 
-def check_pointeur(line, i)
+def multiple_instruction(line, i)
+  count = 0
+  compt = 0
+  if (line.include?("for") == true)
+    return (0)
+  end
+  while (line[compt])
+    if (line[compt] == ";")
+      count = count + 1
+    end
+    compt = compt + 1
+  end
+  if (count > 1)
+    puts("Multiple instruction ligne " + i.to_s)
+  end
+end
+
+def check_pointeur(fichier, i)
   jump_pointeur = 0;
+  if (fichier[i - 1].include?("malloc") == true)
+    name_variable = fichier[i - 1].split("=")
+    name_variable = name_variable[0].split("*")
+    z = i
+    while (fichier[z])
+      if (fichier[z].include?(name_variable[1]) == true)
+        if (fichier[z].include?("==") == false && fichier[z].include?("NULL") == false)
+          puts("Malloc de la ligne ".yellow + i.to_s.yellow + " no verifier".yellow)
+        end
+        return (0)
+      end
+      z = z + 1
+    end
+  end
 end
 
 def check_header(i, line, after)
@@ -67,7 +98,7 @@ def check_new_line_function(line, line_before, i)
 end
 
 def check_control_variable(line, i)
-  if (line.include?(",") == true)
+  if (line.include?(",") == true && line.include?("(") == false)
     puts("Declaration de plusieur variable sur la meme ligne ligne " + i.to_s + " minor(L5)".green)
   end
 end
@@ -75,7 +106,7 @@ end
 def check_uppercase(line, i)
   count = 0
   while (line[count] != "\n")
-    if (line[count] >= "A" && line[count] <= "Z")
+    if (line[count] >= "A" && line[count] <= "Z" && line.include?("NULL"))
       puts("Variable ou fonction en majuscule ligne " + i.to_s)
       return (0)
     end
@@ -132,6 +163,7 @@ def read_file
   end
   i = i + 2
   while (fichier[i])
+    check_pointeur(fichier, i + 1)
     check_control_variable(fichier[i], i + 1)
     check_goto(fichier[i],i + 1)
     check_uppercase(fichier[i], i + 1)
@@ -139,6 +171,7 @@ def read_file
     check_space(fichier[i], i + 1)
     check_new_line_function(fichier[i], fichier[i - 1], i)
     check_long_line(fichier[i], i + 1)
+    multiple_instruction(fichier[i], i + 1)
     i = i + 1
   end
 end
